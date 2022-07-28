@@ -5,114 +5,381 @@ date:   2022-07-29 02:21:25 +0900
 categories: jekyll update
 ---
 
-포트폴리오를 웹으로 작성하기 위해 현재까지 완료된 작업은 다음과 같다.
-1.  Portfolio frontend(React) 제작 및 Dockerfile 생성
-2.  Nginx configuration 설정
-3.  docker-compose 설정. react-web(expose 3000), nginx(80:80)
-4.  AWS EC2 인스턴스 고정 IP와 AWS-route-53 도메인 연결
+<html>
+  <head>
+    <title>no title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    .markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}/**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
 
-react docker file 설정할 때, npm으로 패키지를 install하도록 설정했는데 속도가 매우 느렸다.
-그래서 대안을 찾던 와중 npm 와 yarn을 비교분석 해놓은 아래의 자료가 있었다.
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
 
-<Blockquote>
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
 
-#### Yarn vs. NPM: How to Choose?
-It's essential to consider the advantages and disadvantages of both NPM and Yarn when deciding which one to use.
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
 
-### [Yarn]
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
 
-#### Advantages
-**Supports parallel installation** and Zero installs, both of which dramatically increase performance.
-Newer versions of Yarn offer a more secure form of version locking.
-Active user community.
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
 
-#### Disadvantages
-Yarn doesn't work with Node.js versions older than version 5.
-Yarn has shown problems when trying to install native modules.
+.token.cdata {
+  color: #183691;
+}
 
-### [NPM]
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
 
-#### Advantages
-Easy to use, especially for developers used to the workflow of older versions.
-Local package installation is optimized to save hard drive space.
-The simple UI helps reduce development time.
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
 
-#### Disadvantages
-The online NPM registry can become unreliable in case of performance issues. This also means that NPM requires network access to install packages from the registry.
-Despite a series of improvements across different versions, there are still security vulnerabilities when installing packages.
-Command output can be difficult to read.
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
 
-</Blockquote>
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
 
-요약하면, 속도측면에서 npm은 패키지 install을 시퀀스로 처리하는 반면, yarn은 병렬로 installing하기에 yarn이 속도측면에서 퍼포먼스가 높다. 특히 **다량의 package**를 설치할 수록 yarn이 퍼포먼스가 더 높아진다.
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
 
-![yarnVSnpm](./../images/20220729/yarn%20vs%20npm.png)
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
 
-따라서 필자는 패키지를 다량 가져오기에 병렬처리가능한 yarn을 사용함으로써 cache가 없는 초기 환경일 때, 약 **5분** 내로 배포가 가능하였다 :) (npm took **5 hours** to install with no-cache :()
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
 
 
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
 
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
 
-|                       | Yarn / Yarn 2.0                                          | NPM                                                                |
-| :-------------------: | -------------------------------------------------------- | ------------------------------------------------------------------ |
-|     Zero Installs     | Uses a "**.pnp.cjs**" file to reinstall packages offline | Unsupported                                                        |
-|  Usage of Workspaces  | Supported                                                | Supported                                                          |
-|         Speed         | **Parallel** installation                                | **Sequential** installation                                        |
-|    Remote Scripts     | Supported using the command "yarn dlx"                   | Supported using the command "npx"                                  |
-|      Plug'n'Play      | Uses a ".pnp.cjs" file                                   | Unsupported                                                        |
-|     License Check     | Checks each package download while installing            | Unsupported                                                        |
-| Generating Lock Files | Automatically created as "yarn.lock"                     | Automatically created as "package-lock.json"                       |
-|     Dependencies      | Installs using the "yarn" command                        | Installs dependencies one by one through the "npm install" command |
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
 
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
 
+code.language-yaml {
+  color: #183691;
+}
 
-따라서 최종 변경된 react의 dockerfile은 아래와 같다.
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
 
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
 
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
 
-<Blockquote>
+.language-makefile .token.variable {
+  color: #183691;
+}
 
-**`/react-portfolio-website/client/Dockerfile`**
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
 
-```dockerfile
-FROM node:18-alpine3.16
-RUN mkdir /app
-WORKDIR /app
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
 
-ENV PATH /app/node_modules/.bin:$PATH
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}.emoji {
+  height: 0.8em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}
+    /* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+    </style>
+    
+  </head>
+  <body for="html-export">
+    <div class="mume markdown-preview">
+    <html><head></head><body><div><p>&#xD3EC;&#xD2B8;&#xD3F4;&#xB9AC;&#xC624;&#xB97C; &#xC6F9;&#xC73C;&#xB85C; &#xC791;&#xC131;&#xD558;&#xAE30; &#xC704;&#xD574; &#xD604;&#xC7AC;&#xAE4C;&#xC9C0; &#xC644;&#xB8CC;&#xB41C; &#xC791;&#xC5C5;&#xC740; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xB2E4;.</p>
+<ol>
+<li>Portfolio frontend(React) &#xC81C;&#xC791; &#xBC0F; Dockerfile &#xC0DD;&#xC131;</li>
+<li>Nginx configuration &#xC124;&#xC815;</li>
+<li>docker-compose &#xC124;&#xC815;. react-web(expose 3000), nginx(80:80)</li>
+<li>AWS EC2 &#xC778;&#xC2A4;&#xD134;&#xC2A4; &#xACE0;&#xC815; IP&#xC640; AWS-route-53 &#xB3C4;&#xBA54;&#xC778; &#xC5F0;&#xACB0;</li>
+</ol>
+<p>react docker file &#xC124;&#xC815;&#xD560; &#xB54C;, npm&#xC73C;&#xB85C; &#xD328;&#xD0A4;&#xC9C0;&#xB97C; install&#xD558;&#xB3C4;&#xB85D; &#xC124;&#xC815;&#xD588;&#xB294;&#xB370; &#xC18D;&#xB3C4;&#xAC00; &#xB9E4;&#xC6B0; &#xB290;&#xB838;&#xB2E4;.<br>
+&#xADF8;&#xB798;&#xC11C; &#xB300;&#xC548;&#xC744; &#xCC3E;&#xB358; &#xC640;&#xC911; npm &#xC640; yarn&#xC744; &#xBE44;&#xAD50;&#xBD84;&#xC11D; &#xD574;&#xB193;&#xC740; &#xC544;&#xB798;&#xC758; &#xC790;&#xB8CC;&#xAC00; &#xC788;&#xC5C8;&#xB2E4;.</p>
+<blockquote>
+<h4>Yarn vs. NPM: How to Choose?</h4>
+<p>It&apos;s essential to consider the advantages and disadvantages of both NPM and Yarn when deciding which one to use.</p>
+<h3>[Yarn]</h3>
+<h4>Advantages</h4>
+<p><strong>Supports parallel installation</strong> and Zero installs, both of which dramatically increase performance.<br>
+Newer versions of Yarn offer a more secure form of version locking.<br>
+Active user community.</p>
+<h4>Disadvantages</h4>
+<p>Yarn doesn&apos;t work with Node.js versions older than version 5.<br>
+Yarn has shown problems when trying to install native modules.</p>
+<h3>[NPM]</h3>
+<h4>Advantages</h4>
+<p>Easy to use, especially for developers used to the workflow of older versions.<br>
+Local package installation is optimized to save hard drive space.<br>
+The simple UI helps reduce development time.</p>
+<h4>Disadvantages</h4>
+<p>The online NPM registry can become unreliable in case of performance issues. This also means that NPM requires network access to install packages from the registry.<br>
+Despite a series of improvements across different versions, there are still security vulnerabilities when installing packages.<br>
+Command output can be difficult to read.</p>
+</blockquote>
+<p>&#xC694;&#xC57D;&#xD558;&#xBA74;, &#xC18D;&#xB3C4;&#xCE21;&#xBA74;&#xC5D0;&#xC11C; npm&#xC740; &#xD328;&#xD0A4;&#xC9C0; install&#xC744; &#xC2DC;&#xD000;&#xC2A4;&#xB85C; &#xCC98;&#xB9AC;&#xD558;&#xB294; &#xBC18;&#xBA74;, yarn&#xC740; &#xBCD1;&#xB82C;&#xB85C; installing&#xD558;&#xAE30;&#xC5D0; yarn&#xC774; &#xC18D;&#xB3C4;&#xCE21;&#xBA74;&#xC5D0;&#xC11C; &#xD37C;&#xD3EC;&#xBA3C;&#xC2A4;&#xAC00; &#xB192;&#xB2E4;. &#xD2B9;&#xD788; <strong>&#xB2E4;&#xB7C9;&#xC758; package</strong>&#xB97C; &#xC124;&#xCE58;&#xD560; &#xC218;&#xB85D; yarn&#xC774; &#xD37C;&#xD3EC;&#xBA3C;&#xC2A4;&#xAC00; &#xB354; &#xB192;&#xC544;&#xC9C4;&#xB2E4;.</p>
+<p><img src="data:image/png;charset=utf-8;base64,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" alt="yarnVSnpm"></p>
+<p>&#xB530;&#xB77C;&#xC11C; &#xD544;&#xC790;&#xB294; &#xD328;&#xD0A4;&#xC9C0;&#xB97C; &#xB2E4;&#xB7C9; &#xAC00;&#xC838;&#xC624;&#xAE30;&#xC5D0; &#xBCD1;&#xB82C;&#xCC98;&#xB9AC;&#xAC00;&#xB2A5;&#xD55C; yarn&#xC744; &#xC0AC;&#xC6A9;&#xD568;&#xC73C;&#xB85C;&#xC368; cache&#xAC00; &#xC5C6;&#xB294; &#xCD08;&#xAE30; &#xD658;&#xACBD;&#xC77C; &#xB54C;, &#xC57D; <strong>5&#xBD84;</strong> &#xB0B4;&#xB85C; &#xBC30;&#xD3EC;&#xAC00; &#xAC00;&#xB2A5;&#xD558;&#xC600;&#xB2E4; &#x1F603; (npm took <strong>5 hours</strong> to install with no-cache &#x1F626;)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th>Yarn / Yarn 2.0</th>
+<th>NPM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Zero Installs</td>
+<td>Uses a &quot;<strong>.pnp.cjs</strong>&quot; file to reinstall packages offline</td>
+<td>Unsupported</td>
+</tr>
+<tr>
+<td style="text-align:center">Usage of Workspaces</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td style="text-align:center">Speed</td>
+<td><strong>Parallel</strong> installation</td>
+<td><strong>Sequential</strong> installation</td>
+</tr>
+<tr>
+<td style="text-align:center">Remote Scripts</td>
+<td>Supported using the command &quot;yarn dlx&quot;</td>
+<td>Supported using the command &quot;npx&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center">Plug&apos;n&apos;Play</td>
+<td>Uses a &quot;.pnp.cjs&quot; file</td>
+<td>Unsupported</td>
+</tr>
+<tr>
+<td style="text-align:center">License Check</td>
+<td>Checks each package download while installing</td>
+<td>Unsupported</td>
+</tr>
+<tr>
+<td style="text-align:center">Generating Lock Files</td>
+<td>Automatically created as &quot;yarn.lock&quot;</td>
+<td>Automatically created as &quot;package-lock.json&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center">Dependencies</td>
+<td>Installs using the &quot;yarn&quot; command</td>
+<td>Installs dependencies one by one through the &quot;npm install&quot; command</td>
+</tr>
+</tbody>
+</table>
+<p>&#xB530;&#xB77C;&#xC11C; &#xCD5C;&#xC885; &#xBCC0;&#xACBD;&#xB41C; react&#xC758; dockerfile&#xC740; &#xC544;&#xB798;&#xC640; &#xAC19;&#xB2E4;.</p>
+<blockquote>
+<p><strong><code>/react-portfolio-website/client/Dockerfile</code></strong></p>
+<pre data-role="codeBlock" data-info="dockerfile" class="language-dockerfile"><span class="token instruction"><span class="token keyword keyword-FROM">FROM</span> node:18-alpine3.16</span>
+<span class="token instruction"><span class="token keyword keyword-RUN">RUN</span> mkdir /app</span>
+<span class="token instruction"><span class="token keyword keyword-WORKDIR">WORKDIR</span> /app</span>
+
+<span class="token instruction"><span class="token keyword keyword-ENV">ENV</span> PATH /app/node_modules/.bin:<span class="token variable">$PATH</span></span>
  
 
-COPY package.json /app/package.json
-COPY yarn.lock /app/yarn.lock
-RUN yarn install 
-COPY . /app 
+<span class="token instruction"><span class="token keyword keyword-COPY">COPY</span> package.json /app/package.json</span>
+<span class="token instruction"><span class="token keyword keyword-COPY">COPY</span> yarn.lock /app/yarn.lock</span>
+<span class="token instruction"><span class="token keyword keyword-RUN">RUN</span> yarn install </span>
+<span class="token instruction"><span class="token keyword keyword-COPY">COPY</span> . /app </span>
 
-CMD ["/app/start.sh"]
-COPY .env /app/.env
+<span class="token instruction"><span class="token keyword keyword-CMD">CMD</span> [<span class="token string">&quot;/app/start.sh&quot;</span>]</span>
+<span class="token instruction"><span class="token keyword keyword-COPY">COPY</span> .env /app/.env</span>
 
-CMD ["npm", "start"]
-```
-</Blockquote>
+<span class="token instruction"><span class="token keyword keyword-CMD">CMD</span> [<span class="token string">&quot;npm&quot;</span>, <span class="token string">&quot;start&quot;</span>]</span>
+</pre></blockquote>
+<p><code>/app/start.sh</code>&#xB294; react&#xC758; default port&#xB97C; &#xBCC0;&#xACBD;&#xC2DC;&#xD0A4;&#xAE30; &#xC704;&#xD574; <code>.env</code> &#xD30C;&#xC77C;&#xC744; &#xC0DD;&#xC131;&#xD558;&#xB294; &#xAC04;&#xB2E8;&#xD55C; &#xC258; &#xC2A4;&#xD06C;&#xB9BD;&#xD2B8;&#xC774;&#xB2E4;.</p>
+<blockquote>
+<p><strong><code>/react-portfolio-website/client/start.sh</code></strong></p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml"><span class="token comment">#/app/start.sh</span>
 
-`/app/start.sh`는 react의 default port를 변경시키기 위해 `.env` 파일을 생성하는 간단한 쉘 스크립트이다.
+<span class="token comment">#!/bin/sh</span>
+set <span class="token punctuation">-</span>e
 
-<Blockquote>
-
-**`/react-portfolio-website/client/start.sh`**
-
-```yaml
-#/app/start.sh
-
-#!/bin/sh
-set -e
-
-echo "make .env with PORT=$PORT"
-echo "PORT=$PORT" > .env
-```
-</Blockquote>
-
-
-또한 필자는 도커로 이를 관리하기에 image크기 또한 신경써야한다. image 크기를 **60%** 줄여 최적화한 다음의 issue를 확인하자.
-https://github.com/yarnpkg/berry/discussions/3201#discussioncomment-1086179
-(추가로 docker에서 `.pnp,cjs` 파일을 카피하여 Zero install또한 활용하도록 할 수 있다)
-
+echo &quot;make .env with PORT=$PORT&quot;
+echo &quot;PORT=$PORT&quot; <span class="token punctuation">&gt;</span> .env
+</pre></blockquote>
+<p>&#xB610;&#xD55C; &#xD544;&#xC790;&#xB294; &#xB3C4;&#xCEE4;&#xB85C; &#xC774;&#xB97C; &#xAD00;&#xB9AC;&#xD558;&#xAE30;&#xC5D0; image&#xD06C;&#xAE30; &#xB610;&#xD55C; &#xC2E0;&#xACBD;&#xC368;&#xC57C;&#xD55C;&#xB2E4;. image &#xD06C;&#xAE30;&#xB97C; <strong>60%</strong> &#xC904;&#xC5EC; &#xCD5C;&#xC801;&#xD654;&#xD55C; &#xB2E4;&#xC74C;&#xC758; issue&#xB97C; &#xD655;&#xC778;&#xD558;&#xC790;.<br>
+<a href="https://github.com/yarnpkg/berry/discussions/3201#discussioncomment-1086179">https://github.com/yarnpkg/berry/discussions/3201#discussioncomment-1086179</a><br>
+(&#xCD94;&#xAC00;&#xB85C; docker&#xC5D0;&#xC11C; <code>.pnp,cjs</code> &#xD30C;&#xC77C;&#xC744; &#xCE74;&#xD53C;&#xD558;&#xC5EC; Zero install&#xB610;&#xD55C; &#xD65C;&#xC6A9;&#xD558;&#xB3C4;&#xB85D; &#xD560; &#xC218; &#xC788;&#xB2E4;)</p>
+</div></body></html>
+    </div>
+  </body>
+</html>
