@@ -1,7 +1,7 @@
 ---
 title: "Welcome to Jekyll!"
-date: 2022-07-29 01:40:28 -0400
-categories: jekyll update
+date: 2022-07-29 01:40:28 +0900
+category: jekyll update
 published: true
 ---
 
