@@ -1,7 +1,9 @@
 ---
+layout: post
 title: "Apache VS Nginx"
 date: 2022-07-29 00:26:28 -0400
-categories: jekyll update
+category: Dev
+tags: [nginx,apache]
 ---
 
 현재까지 포트폴리오
