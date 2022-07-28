@@ -1,0 +1,561 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>npm vs yarn - Life is a journey</title>
+<meta name="description" content="포트폴리오를 웹으로 작성하기 위해 현재까지 완료된 작업은 다음과 같다.    Portfolio frontend(React) 제작 및 Dockerfile 생성   Nginx configuration 설정   docker-compose 설정. react-web(expose 3000), nginx(80:80)   AWS EC2 인스턴스 고정 IP와 AWS-route-53 도메인 연결">
+
+
+  <meta name="author" content="Hwangbo Gyumin">
+  
+  <meta property="article:author" content="Hwangbo Gyumin">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Life is a journey">
+<meta property="og:title" content="npm vs yarn">
+<meta property="og:url" content="http://localhost:4000/package/npm-vs-yarn/">
+
+
+  <meta property="og:description" content="포트폴리오를 웹으로 작성하기 위해 현재까지 완료된 작업은 다음과 같다.    Portfolio frontend(React) 제작 및 Dockerfile 생성   Nginx configuration 설정   docker-compose 설정. react-web(expose 3000), nginx(80:80)   AWS EC2 인스턴스 고정 IP와 AWS-route-53 도메인 연결">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-07-29T06:00:25+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/package/npm-vs-yarn/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Hwangbo Gyumin",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Life is a journey Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Life is a journey
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Hwangbo Gyumin</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Study and Work</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Somewhere</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ghkdqhrbals@email.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="http://portfolio.hwangbogyumin.com" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="npm vs yarn">
+    <meta itemprop="description" content="포트폴리오를 웹으로 작성하기 위해 현재까지 완료된 작업은 다음과 같다.  Portfolio frontend(React) 제작 및 Dockerfile 생성  Nginx configuration 설정  docker-compose 설정. react-web(expose 3000), nginx(80:80)  AWS EC2 인스턴스 고정 IP와 AWS-route-53 도메인 연결">
+    <meta itemprop="datePublished" content="2022-07-29T06:00:25+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/package/npm-vs-yarn/" class="u-url" itemprop="url">npm vs yarn
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <p>포트폴리오를 웹으로 작성하기 위해 현재까지 완료된 작업은 다음과 같다.</p>
+<ol>
+  <li>Portfolio frontend(React) 제작 및 Dockerfile 생성</li>
+  <li>Nginx configuration 설정</li>
+  <li>docker-compose 설정. react-web(expose 3000), nginx(80:80)</li>
+  <li>AWS EC2 인스턴스 고정 IP와 AWS-route-53 도메인 연결</li>
+</ol>
+
+<p>react docker file 설정할 때, npm으로 패키지를 install하도록 설정했는데 속도가 매우 느렸다.
+그래서 대안을 찾던 와중 npm 와 yarn을 비교분석 해놓은 아래의 자료가 있었다.</p>
+
+<div class="notice">
+  <h4 id="yarn-vs-npm-how-to-choose">Yarn vs. NPM: How to Choose?</h4>
+  <p>It’s essential to consider the advantages and disadvantages of both NPM and Yarn when deciding which one to use.</p>
+
+  <h3 id="yarn">[Yarn]</h3>
+
+  <h4 id="advantages">Advantages</h4>
+
+  <p>Supports <strong>parallel installation</strong> and <strong>Zero installs</strong>, both of which dramatically increase performance.
+Newer versions of Yarn offer a more secure form of version locking.
+Active user community.</p>
+
+  <h4 id="disadvantages">Disadvantages</h4>
+
+  <p>Yarn doesn’t work with Node.js versions older than version 5.
+Yarn has shown problems when trying to install native modules.</p>
+
+  <h3 id="npm">[NPM]</h3>
+
+  <h4 id="advantages-1">Advantages</h4>
+
+  <p>Easy to use, especially for developers used to the workflow of older versions.
+Local package installation is optimized to save hard drive space.
+The simple UI helps reduce development time.</p>
+
+  <p><strong>Disadvantages</strong>
+The online NPM registry can become unreliable in case of performance issues. This also means that NPM requires network access to install packages from the registry.
+Despite a series of improvements across different versions, there are still security vulnerabilities when installing packages.
+Command output can be difficult to read.</p>
+</div>
+
+<p>요약하면, 속도측면에서 npm은 패키지 install을 시퀀스로 처리하는 반면, yarn은 병렬로 installing하기에 yarn이 속도측면에서 퍼포먼스가 높다. 특히 <strong>다량의 package</strong>를 설치할 수록 yarn이 퍼포먼스가 더 높아진다.</p>
+
+<p><img src="/assets/images/yvsn.png" /></p>
+
+<p>따라서 필자는 패키지를 다량 가져오기에 병렬처리가능한 yarn을 사용함으로써 cache가 없는 초기 환경일 때, 약 <strong>5분</strong> 내로 배포가 가능하였다 (npm took <strong>5 hours</strong> to install with no-cache)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th>Yarn / Yarn 2.0</th>
+      <th>NPM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Zero Installs</td>
+      <td>Uses a “<strong>.pnp.cjs</strong>” file to reinstall packages offline</td>
+      <td>Unsupported</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Usage of Workspaces</td>
+      <td>Supported</td>
+      <td>Supported</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Speed</td>
+      <td><strong>Parallel</strong> installation</td>
+      <td><strong>Sequential</strong> installation</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Remote Scripts</td>
+      <td>Supported using the command “yarn dlx”</td>
+      <td>Supported using the command “npx”</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Plug’n’Play</td>
+      <td>Uses a “.pnp.cjs” file</td>
+      <td>Unsupported</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">License Check</td>
+      <td>Checks each package download while installing</td>
+      <td>Unsupported</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Generating Lock Files</td>
+      <td>Automatically created as “yarn.lock”</td>
+      <td>Automatically created as “package-lock.json”</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Dependencies</td>
+      <td>Installs using the “yarn” command</td>
+      <td>Installs dependencies one by one through the “npm install” command</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>따라서 최종 변경된 react의 dockerfile은 아래와 같다.</p>
+
+<p style="margin:0 0 0 0; background-color:#f2f3f3; border-radius:0.2em; text-align:center;">/react-portfolio-website/client/Dockerfile</p>
+
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> node:18-alpine3.16</span>
+<span class="k">RUN </span><span class="nb">mkdir</span> /app
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+
+<span class="k">ENV</span><span class="s"> PATH /app/node_modules/.bin:$PATH </span>
+
+<span class="k">COPY</span><span class="s"> package.json /app/package.json</span>
+<span class="k">COPY</span><span class="s"> yarn.lock /app/yarn.lock</span>
+<span class="k">RUN </span>yarn <span class="nb">install</span> 
+<span class="k">COPY</span><span class="s"> . /app </span>
+
+<span class="k">CMD</span><span class="s"> ["/app/start.sh"]</span>
+<span class="k">COPY</span><span class="s"> .env /app/.env</span>
+
+<span class="k">CMD</span><span class="s"> ["npm", "start"]</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">/app/start.sh</code>는 react의 default port를 변경시키기 위해 <code class="language-plaintext highlighter-rouge">.env</code> 파일을 생성하는 간단한 쉘 스크립트이다.</p>
+
+<p style="margin:0 0 0 0; background-color:#f2f3f3; border-radius:0.2em; text-align:center;">/react-portfolio-website/client/start.sh</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/bin/sh</span>
+<span class="s">set -e</span>
+
+<span class="s">echo "make .env with PORT=$PORT"</span>
+<span class="s">echo "PORT=$PORT" &gt; .env</span>
+</code></pre></div></div>
+
+<p>또한 필자는 도커로 이를 관리하기에 image크기 또한 신경써야한다. image 크기를 <strong>60%</strong> 줄여 최적화한 다음의 issue를 확인하자.</p>
+
+<p>https://github.com/yarnpkg/berry/discussions/3201#discussioncomment-1086179</p>
+
+<p>(추가로 docker에서 <code class="language-plaintext highlighter-rouge">.pnp,cjs</code> 파일을 카피하여 Zero install또한 활용하도록 할 수 있다)</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#npm" class="page__taxonomy-item p-category" rel="tag">npm</a><span class="sep">, </span>
+    
+      <a href="/tags/#package-install" class="page__taxonomy-item p-category" rel="tag">package install</a><span class="sep">, </span>
+    
+      <a href="/tags/#yarn" class="page__taxonomy-item p-category" rel="tag">yarn</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#package" class="page__taxonomy-item p-category" rel="tag">package</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-07-29T06:00:25+09:00">July 29, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=npm+vs+yarn%20http%3A%2F%2Flocalhost%3A4000%2Fpackage%2Fnpm-vs-yarn%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fpackage%2Fnpm-vs-yarn%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fpackage%2Fnpm-vs-yarn%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+            
+      </div>
+    </div>
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Hwangbo Gyumin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

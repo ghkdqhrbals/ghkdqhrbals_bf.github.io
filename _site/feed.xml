@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-29T07:41:09+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Life is a journey</title><subtitle>Life is a journey</subtitle><author><name>Hwangbo Gyumin</name></author><entry><title type="html">npm vs yarn</title><link href="http://localhost:4000/package/npm-vs-yarn/" rel="alternate" type="text/html" title="npm vs yarn" /><published>2022-07-29T06:00:25+09:00</published><updated>2022-07-29T06:00:25+09:00</updated><id>http://localhost:4000/package/npm-vs-yarn</id><content type="html" xml:base="http://localhost:4000/package/npm-vs-yarn/"><![CDATA[<p>포트폴리오를 웹으로 작성하기 위해 현재까지 완료된 작업은 다음과 같다.</p>
+<ol>
+  <li>Portfolio frontend(React) 제작 및 Dockerfile 생성</li>
+  <li>Nginx configuration 설정</li>
+  <li>docker-compose 설정. react-web(expose 3000), nginx(80:80)</li>
+  <li>AWS EC2 인스턴스 고정 IP와 AWS-route-53 도메인 연결</li>
+</ol>
+
+<p>react docker file 설정할 때, npm으로 패키지를 install하도록 설정했는데 속도가 매우 느렸다.
+그래서 대안을 찾던 와중 npm 와 yarn을 비교분석 해놓은 아래의 자료가 있었다.</p>
+
+<div class="notice">
+  <h4 id="yarn-vs-npm-how-to-choose">Yarn vs. NPM: How to Choose?</h4>
+  <p>It’s essential to consider the advantages and disadvantages of both NPM and Yarn when deciding which one to use.</p>
+
+  <h3 id="yarn">[Yarn]</h3>
+
+  <h4 id="advantages">Advantages</h4>
+
+  <p>Supports <strong>parallel installation</strong> and <strong>Zero installs</strong>, both of which dramatically increase performance.
+Newer versions of Yarn offer a more secure form of version locking.
+Active user community.</p>
+
+  <h4 id="disadvantages">Disadvantages</h4>
+
+  <p>Yarn doesn’t work with Node.js versions older than version 5.
+Yarn has shown problems when trying to install native modules.</p>
+
+  <h3 id="npm">[NPM]</h3>
+
+  <h4 id="advantages-1">Advantages</h4>
+
+  <p>Easy to use, especially for developers used to the workflow of older versions.
+Local package installation is optimized to save hard drive space.
+The simple UI helps reduce development time.</p>
+
+  <p><strong>Disadvantages</strong>
+The online NPM registry can become unreliable in case of performance issues. This also means that NPM requires network access to install packages from the registry.
+Despite a series of improvements across different versions, there are still security vulnerabilities when installing packages.
+Command output can be difficult to read.</p>
+</div>
+
+<p>요약하면, 속도측면에서 npm은 패키지 install을 시퀀스로 처리하는 반면, yarn은 병렬로 installing하기에 yarn이 속도측면에서 퍼포먼스가 높다. 특히 <strong>다량의 package</strong>를 설치할 수록 yarn이 퍼포먼스가 더 높아진다.</p>
+
+<p><img src="/assets/images/yvsn.png" /></p>
+
+<p>따라서 필자는 패키지를 다량 가져오기에 병렬처리가능한 yarn을 사용함으로써 cache가 없는 초기 환경일 때, 약 <strong>5분</strong> 내로 배포가 가능하였다 (npm took <strong>5 hours</strong> to install with no-cache)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th>Yarn / Yarn 2.0</th>
+      <th>NPM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Zero Installs</td>
+      <td>Uses a “<strong>.pnp.cjs</strong>” file to reinstall packages offline</td>
+      <td>Unsupported</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Usage of Workspaces</td>
+      <td>Supported</td>
+      <td>Supported</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Speed</td>
+      <td><strong>Parallel</strong> installation</td>
+      <td><strong>Sequential</strong> installation</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Remote Scripts</td>
+      <td>Supported using the command “yarn dlx”</td>
+      <td>Supported using the command “npx”</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Plug’n’Play</td>
+      <td>Uses a “.pnp.cjs” file</td>
+      <td>Unsupported</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">License Check</td>
+      <td>Checks each package download while installing</td>
+      <td>Unsupported</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Generating Lock Files</td>
+      <td>Automatically created as “yarn.lock”</td>
+      <td>Automatically created as “package-lock.json”</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Dependencies</td>
+      <td>Installs using the “yarn” command</td>
+      <td>Installs dependencies one by one through the “npm install” command</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>따라서 최종 변경된 react의 dockerfile은 아래와 같다.</p>
+
+<p style="margin:0 0 0 0; background-color:#f2f3f3; border-radius:0.2em; text-align:center;">/react-portfolio-website/client/Dockerfile</p>
+
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> node:18-alpine3.16</span>
+<span class="k">RUN </span><span class="nb">mkdir</span> /app
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+
+<span class="k">ENV</span><span class="s"> PATH /app/node_modules/.bin:$PATH </span>
+
+<span class="k">COPY</span><span class="s"> package.json /app/package.json</span>
+<span class="k">COPY</span><span class="s"> yarn.lock /app/yarn.lock</span>
+<span class="k">RUN </span>yarn <span class="nb">install</span> 
+<span class="k">COPY</span><span class="s"> . /app </span>
+
+<span class="k">CMD</span><span class="s"> ["/app/start.sh"]</span>
+<span class="k">COPY</span><span class="s"> .env /app/.env</span>
+
+<span class="k">CMD</span><span class="s"> ["npm", "start"]</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">/app/start.sh</code>는 react의 default port를 변경시키기 위해 <code class="language-plaintext highlighter-rouge">.env</code> 파일을 생성하는 간단한 쉘 스크립트이다.</p>
+
+<p style="margin:0 0 0 0; background-color:#f2f3f3; border-radius:0.2em; text-align:center;">/react-portfolio-website/client/start.sh</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/bin/sh</span>
+<span class="s">set -e</span>
+
+<span class="s">echo "make .env with PORT=$PORT"</span>
+<span class="s">echo "PORT=$PORT" &gt; .env</span>
+</code></pre></div></div>
+
+<p>또한 필자는 도커로 이를 관리하기에 image크기 또한 신경써야한다. image 크기를 <strong>60%</strong> 줄여 최적화한 다음의 issue를 확인하자.</p>
+
+<p>https://github.com/yarnpkg/berry/discussions/3201#discussioncomment-1086179</p>
+
+<p>(추가로 docker에서 <code class="language-plaintext highlighter-rouge">.pnp,cjs</code> 파일을 카피하여 Zero install또한 활용하도록 할 수 있다)</p>]]></content><author><name>Hwangbo Gyumin</name></author><category term="package" /><category term="package install" /><category term="npm" /><category term="yarn" /><summary type="html"><![CDATA[포트폴리오를 웹으로 작성하기 위해 현재까지 완료된 작업은 다음과 같다. Portfolio frontend(React) 제작 및 Dockerfile 생성 Nginx configuration 설정 docker-compose 설정. react-web(expose 3000), nginx(80:80) AWS EC2 인스턴스 고정 IP와 AWS-route-53 도메인 연결]]></summary></entry></feed>
