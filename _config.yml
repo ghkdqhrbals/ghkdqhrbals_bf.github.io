@@ -17,7 +17,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 # Site Settings
 remote_theme             : mmistakes/minimal-mistakes
 locale                   : "en-US"
-title                    : "HB dev"
+title                    : "HBlog"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Hwangbo Gyumin"
