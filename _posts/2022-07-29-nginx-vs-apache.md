@@ -2,6 +2,7 @@
 title: "Welcome to Jekyll!"
 date: 2022-07-29 01:40:28 -0400
 categories: jekyll update
+published: true
 ---
 
 현재까지 포트폴리오
