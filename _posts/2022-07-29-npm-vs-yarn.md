@@ -109,7 +109,7 @@ echo "PORT=$PORT" > .env
 
 또한 필자는 도커로 이를 관리하기에 image크기 또한 신경써야한다. image 크기를 **60%** 줄여 최적화한 다음의 issue를 확인하자.
 
-https://github.com/yarnpkg/berry/discussions/3201#discussioncomment-1086179
+(https://github.com/yarnpkg/berry/discussions/3201#discussioncomment-1086179)
 
 (추가로 docker에서 `.pnp,cjs` 파일을 카피하여 Zero install또한 활용하도록 할 수 있다)
 
